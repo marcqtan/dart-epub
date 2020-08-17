@@ -46,16 +46,18 @@ class BookCoverReader {
     // images.Image retval = images.decodeImage(coverImageContent);
     // return retval;
 
-    EpubManifestItem coverManifestItem =
-        bookRef.Schema.Package.Manifest.Items.firstWhere(
-      (element) => element.Properties == 'cover-image',
-    );
+    EpubManifestItem coverManifestItem = bookRef.Schema.Package.Manifest.Items
+        .firstWhere((element) => element.Properties == 'cover-image',
+            orElse: () => null);
+
+    if (coverManifestItem == null) {
+      throw Exception("Cover Image Properties not Found");
+    }
 
     EpubByteContentFileRef coverImageContentFileRef;
 
     if (!bookRef.Content.Images.containsKey(coverManifestItem.Href)) {
-      throw Exception(
-          "Incorrect EPUB manifest: item with href = \"${coverManifestItem.Href}\" is missing.");
+      throw Exception("Cover Image Resource not Found");
     }
 
     coverImageContentFileRef = bookRef.Content.Images[coverManifestItem.Href];
