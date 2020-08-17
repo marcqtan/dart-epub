@@ -76,6 +76,9 @@ class PackageReader {
             case "media-type":
               manifestItem.MediaType = attributeValue;
               break;
+            case "properties":
+              manifestItem.Properties = attributeValue;
+              break;
             case "required-namespace":
               manifestItem.RequiredNamespace = attributeValue;
               break;
