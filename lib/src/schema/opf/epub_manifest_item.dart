@@ -39,6 +39,6 @@ class EpubManifestItem {
   }
 
   String toString() {
-    return "Id: ${Id}, Href = ${Href}, MediaType = ${MediaType}, Properties = ${Properties};
+    return "Id: ${Id}, Href = ${Href}, MediaType = ${MediaType}, Properties = ${Properties}";
   }
 }
