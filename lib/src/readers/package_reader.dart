@@ -95,14 +95,17 @@ class PackageReader {
         });
 
         if (manifestItem.Id == null || manifestItem.Id.isEmpty) {
-          throw Exception("Incorrect EPUB manifest: item ID is missing");
+          // throw Exception("Incorrect EPUB manifest: item ID is missing");
+          return;
         }
         if (manifestItem.Href == null || manifestItem.Href.isEmpty) {
-          throw Exception("Incorrect EPUB manifest: item href is missing");
+          // throw Exception("Incorrect EPUB manifest: item href is missing");
+          return;
         }
         if (manifestItem.MediaType == null || manifestItem.MediaType.isEmpty) {
-          throw Exception(
-              "Incorrect EPUB manifest: item media type is missing");
+          // throw Exception(
+          //     "Incorrect EPUB manifest: item media type is missing");
+          return;
         }
         result.Items.add(manifestItem);
       }
